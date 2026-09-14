@@ -35,6 +35,7 @@ oid = ["digest/oid"]
 [lints.rust.unexpected_cfgs]
 level = "warn"
 check-cfg = [
+    'cfg(target_vendor, values("succinct"))',
     'cfg(sha2_backend, values("soft", "riscv-zknh"))',
     'cfg(sha2_256_backend, values("aarch64-sha2", "soft", "riscv-zknh", "x86-sha"))',
     'cfg(sha2_512_backend, values("aarch64-sha3", "soft", "riscv-zknh", "x86-avx2"))',
