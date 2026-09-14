@@ -1,5 +1,8 @@
 cfg_if::cfg_if! {
-    if #[cfg(any(sha2_backend = "soft", sha2_256_backend = "soft"))] {
+    if #[cfg(all(target_os = "zkvm", target_vendor = "succinct"))] {
+        mod succinct;
+        use succinct::compress;
+    } else if #[cfg(any(sha2_backend = "soft", sha2_256_backend = "soft"))] {
         mod soft;
         use soft::compress;
     } else if #[cfg(any(sha2_backend = "riscv-zknh", sha2_256_backend = "riscv-zknh"))] {
